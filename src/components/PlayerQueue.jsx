@@ -23,11 +23,11 @@ const PlayerQueue = ({ players, newPlayerName, addPlayer, deletePlayer, setNewPl
           value={newPlayerName}
           onChange={(e) => setNewPlayerName(e.target.value)}
           placeholder="Enter player name"
-          className="flex-1 p-2 border border-gray-300 rounded-l focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="flex-1 p-2 border border-[#272660] rounded-l focus:outline-none focus:ring-none focus:ring-blue-500"
         />
         <button
           onClick={addPlayer}
-          className="px-4 bg-[#272660] text-white rounded-r hover:bg-bg-[#272660] focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="px-4 bg-[#272660] text-white rounded-r"
         >
           Add Player
         </button>

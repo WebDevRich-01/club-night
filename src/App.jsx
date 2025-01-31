@@ -86,15 +86,34 @@ function App() {
   // Get the top two players from the queue
   const nextPlayers = players.slice(0, 2);
 
+  // Function to clear all data
+  const clearAll = () => {
+    setPlayers([]);
+    setCourts([
+      { id: 1, players: [], isAvailable: true },
+      { id: 2, players: [], isAvailable: true },
+      { id: 3, players: [], isAvailable: true },
+      { id: 4, players: [], isAvailable: true },
+    ]);
+  };
+
   return (
     <div className="min-h-screen  bg-[#82cfed] p-8 flex flex-col">
       {/* Logo Header */}
-      <div className="flex justify-center mb-8">
-        <img
-          src={logo} // Use the imported logo
-          alt="Lansdown Squash"
-          className="h-10" // Adjust the height as needed
-        /> 
+      <div className="flex justify-between items-center mb-8">
+        <div>
+          <img
+            src={logo} // Use the imported logo
+            alt="Lansdown Squash"
+            className="h-10" // Adjust the height as needed
+          />
+        </div>
+        <button
+          onClick={clearAll}
+          className="ml-4 px-4 py-2 bg-gray-500 text-white rounded"
+        >
+          Reset
+        </button>
       </div>
 
       {/* Main Content */}
@@ -107,7 +126,7 @@ function App() {
           </div>
 
           {/* Player Queue Section */}
-          <div className="bg-gray-100 p-6 rounded-lg shadow-md flex-1 flex flex-col">
+          <div className="bg-gray-100/50 p-6 rounded-lg shadow-md flex-1 flex flex-col">
             <PlayerQueue
               newPlayerName={newPlayerName}
               setNewPlayerName={setNewPlayerName}
