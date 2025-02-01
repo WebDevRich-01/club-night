@@ -1,5 +1,6 @@
 import React from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import { FaGripVertical, FaTrash } from "react-icons/fa"; // Import the drag handle icon
 
 const PlayerQueue = ({ players, newPlayerName, addPlayer, deletePlayer, setNewPlayerName, setPlayers }) => {
 
@@ -55,12 +56,16 @@ const PlayerQueue = ({ players, newPlayerName, addPlayer, deletePlayer, setNewPl
                       {...provided.dragHandleProps}
                       className="flex items-center justify-between p-3 bg-white shadow-md hover:shadow-md transition-shadow mb-2"
                     >
-                      <span className="text-gray-700">{player.name}</span>
+                      {/* Drag Handle Icon */}
+                      <div className="text-gray-400">
+                        <FaGripVertical />
+                      </div>
+                      <span className="text-gray-700 ml-2 flex-1">{player.name}</span>
                       <button
                         onClick={() => deletePlayer(player.id)}
-                        className="text-red-500 hover:text-red-700"
+                        className="text-gray-500 flex justify-between"
                       >
-                        🗑️
+                        <FaTrash />
                       </button>
                     </div>
                   )}
