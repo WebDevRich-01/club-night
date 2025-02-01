@@ -126,7 +126,7 @@ function App() {
           </div>
 
           {/* Player Queue Section */}
-          <div className="bg-gray-100 p-6 rounded-lg shadow-md flex-1 flex flex-col">
+          <div className="bg-gray-100/50 p-6 rounded-lg shadow-md flex-1 flex flex-col">
             <PlayerQueue
               newPlayerName={newPlayerName}
               setNewPlayerName={setNewPlayerName}
