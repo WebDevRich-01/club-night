@@ -5,6 +5,33 @@ import Court from "./components/Court";
 import logo from "./assets/lansdown-logo.png"; // Adjust the path as needed
 
 function App() {
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
+  // Function to toggle fullscreen mode
+  const toggleFullscreen = () => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().then(() => {
+        setIsFullscreen(true);
+      });
+    } else {
+      document.exitFullscreen().then(() => {
+        setIsFullscreen(false);
+      });
+    }
+  };
+
+  // Listen for fullscreen change events
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      setIsFullscreen(!!document.fullscreenElement);
+    };
+
+    document.addEventListener("fullscreenchange", handleFullscreenChange);
+    return () => {
+      document.removeEventListener("fullscreenchange", handleFullscreenChange);
+    };
+  }, []);
+
   const loadState = () => {
     const savedPlayers = JSON.parse(localStorage.getItem("players")) || [];
     const savedCourts = JSON.parse(localStorage.getItem("courts")) || [
@@ -108,12 +135,25 @@ function App() {
             className="h-10" // Adjust the height as needed
           />
         </div>
-        <button
-          onClick={clearAll}
-          className="ml-4 px-4 py-2 bg-gray-500 text-white rounded"
-        >
-          Reset
-        </button>
+
+        {/* Buttons */}
+        <div className="flex gap-4">
+          {/* Fullscreen Button */}
+          <button
+            onClick={toggleFullscreen}
+            className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            {isFullscreen ? "Exit Fullscreen" : "Fullscreen"}
+          </button>
+
+          {/* Clear All Button */}
+          <button
+            onClick={clearAll}
+            className="ml-4 px-4 py-2 bg-gray-500 text-white rounded"
+          >
+            Reset
+          </button>
+        </div>
       </div>
 
       {/* Main Content */}
