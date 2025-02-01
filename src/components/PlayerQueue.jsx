@@ -1,6 +1,6 @@
 import React from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import { FaGripVertical } from "react-icons/fa"; // Import the drag handle icon
+import { FaGripVertical, FaTrash } from "react-icons/fa"; // Import the drag handle icon
 
 const PlayerQueue = ({ players, newPlayerName, addPlayer, deletePlayer, setNewPlayerName, setPlayers }) => {
 
@@ -63,9 +63,9 @@ const PlayerQueue = ({ players, newPlayerName, addPlayer, deletePlayer, setNewPl
                       <span className="text-gray-700 ml-2 flex-1">{player.name}</span>
                       <button
                         onClick={() => deletePlayer(player.id)}
-                        className="text-red-500 hover:text-red-700 flex justify-between"
+                        className="text-gray-500 flex justify-between"
                       >
-                        🗑️
+                        <FaTrash />
                       </button>
                     </div>
                   )}
