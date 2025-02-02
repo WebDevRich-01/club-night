@@ -5,32 +5,6 @@ import Court from "./components/Court";
 import logo from "./assets/lansdown-logo.png"; // Adjust the path as needed
 
 function App() {
-  const [isFullscreen, setIsFullscreen] = useState(false);
-
-  // Function to toggle fullscreen mode
-  const toggleFullscreen = () => {
-    if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen().then(() => {
-        setIsFullscreen(true);
-      });
-    } else {
-      document.exitFullscreen().then(() => {
-        setIsFullscreen(false);
-      });
-    }
-  };
-
-  // Listen for fullscreen change events
-  useEffect(() => {
-    const handleFullscreenChange = () => {
-      setIsFullscreen(!!document.fullscreenElement);
-    };
-
-    document.addEventListener("fullscreenchange", handleFullscreenChange);
-    return () => {
-      document.removeEventListener("fullscreenchange", handleFullscreenChange);
-    };
-  }, []);
 
   const loadState = () => {
     const savedPlayers = JSON.parse(localStorage.getItem("players")) || [];
@@ -125,7 +99,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen  bg-[#82cfed] p-8 flex flex-col">
+    <div className="min-h-screen  bg-[#82cfed] p-4 flex flex-col">
       {/* Logo Header */}
       <div className="flex justify-between items-center mb-8">
         <div>
@@ -138,18 +112,10 @@ function App() {
 
         {/* Buttons */}
         <div className="flex gap-4">
-          {/* Fullscreen Button */}
-          <button
-            onClick={toggleFullscreen}
-            className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          >
-            {isFullscreen ? "Exit Fullscreen" : "Fullscreen"}
-          </button>
-
           {/* Clear All Button */}
           <button
             onClick={clearAll}
-            className="ml-4 px-4 py-2 bg-gray-500 text-white rounded"
+            className="ml-4 px-4 py-2 bg-gray-500 text-white"
           >
             Reset
           </button>
@@ -157,16 +123,16 @@ function App() {
       </div>
 
       {/* Main Content */}
-      <div className="flex flex-1 gap-8">
+      <div className="flex flex-1 gap-4">
         {/* First Column: Next Players and Player Queue */}
-        <div className="flex flex-col w-1/2 gap-8">
+        <div className="flex flex-col w-1/2 gap-4">
           {/* Next Players Section */}
-          <div className=" bg-white p-6 rounded-lg shadow-md h-66 flex flex-col">
+          <div className=" bg-white p-4 shadow-md h-66 flex flex-col">
             <NextPlayers players={nextPlayers} onPlay={handlePlay} />
           </div>
 
           {/* Player Queue Section */}
-          <div className="bg-gray-100/50 p-6 rounded-lg shadow-md flex-1 flex flex-col">
+          <div className="bg-gray-100/50 p-4 shadow-md flex-1 flex flex-col">
             <PlayerQueue
               newPlayerName={newPlayerName}
               setNewPlayerName={setNewPlayerName}
@@ -179,9 +145,9 @@ function App() {
         </div>
 
         {/* Second Column: Courts */}
-        <div className="flex flex-col w-1/2 gap-8">
+        <div className="flex flex-col w-1/2 gap-4">
           {courts.map((court) => (
-            <div key={court.id} className={`bg-white p-4 rounded-lg shadow-md border border-5 ${
+            <div key={court.id} className={`bg-white p-4 shadow-md border border-5 ${
               court.isAvailable ? "flex-1 border-red-500" : "h-24 border-gray-50" // Adjust height for disabled courts
             }  transition-all duration-300`}>
               <Court

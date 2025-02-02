@@ -1,22 +1,15 @@
 import React from "react";
+import Switch from "@mui/material/Switch";
 
 const Court = ({ courtId, players, isAvailable, onFinish, onToggleAvailability }) => {
   return (
     <div className="flex flex-col h-full">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-xl font-bold mb-4 text-gray-800">Court {courtId}</h2>
-        <button
+        <Switch
+          defaultChecked
           onClick={onToggleAvailability}
-          className={`px-4 py-2 rounded ${
-            isAvailable
-              ? "bg-green-500 hover:bg-green-600"
-              : "bg-red-500 hover:bg-red-600"
-          } text-white focus:outline-none focus:ring-2 focus:ring-offset-2 ${
-            isAvailable ? "focus:ring-green-500" : "focus:ring-red-500"
-          }`}
-        >
-          {isAvailable ? "Available" : "Booked"}
-        </button>
+        />
       </div>
 
       {/* Show players and "Finished" button only if the court is available */}
@@ -39,7 +32,7 @@ const Court = ({ courtId, players, isAvailable, onFinish, onToggleAvailability }
           <button
             onClick={onFinish}
             disabled={players.length === 0 || !isAvailable}
-            className="mt-4 w-full px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 disabled:bg-gray-300 disabled:cursor-not-allowed"
+            className="mt-4 w-full px-4 py-2 bg-red-500 text-white hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 disabled:bg-gray-300 disabled:cursor-not-allowed"
           >
             Finished
           </button>

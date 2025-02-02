@@ -24,13 +24,13 @@ const PlayerQueue = ({ players, newPlayerName, addPlayer, deletePlayer, setNewPl
           value={newPlayerName}
           onChange={(e) => setNewPlayerName(e.target.value)}
           placeholder="Enter player name"
-          className="flex-1 p-2 border border-[#272660] rounded-l focus:outline-none focus:ring-none focus:ring-blue-500"
+          className="flex-1 p-2 border border-[#272660] focus:outline-none focus:ring-none focus:ring-blue-500"
         />
         <button
           onClick={addPlayer}
-          className="px-4 bg-[#272660] text-white rounded-r"
+          className="px-4 bg-[#272660] text-white"
         >
-          Add Player
+          Join
         </button>
       </div>
 
@@ -49,12 +49,14 @@ const PlayerQueue = ({ players, newPlayerName, addPlayer, deletePlayer, setNewPl
                   draggableId={player.id.toString()}
                   index={index}
                 >
-                  {(provided) => (
+                  {(provided, snapshot) => (
                     <div
                       ref={provided.innerRef}
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
-                      className="flex items-center justify-between p-3 bg-white shadow-md hover:shadow-md transition-shadow mb-2"
+                      className={`flex items-center justify-between p-3 shadow-md hover:shadow-md transition-shadow mb-2 ${
+                        snapshot.isDragging ? "bg-white/80 scale-105" : " bg-white"
+                      }`}
                     >
                       {/* Drag Handle Icon */}
                       <div className="text-gray-400">
