@@ -30,7 +30,7 @@ const PlayerQueue = ({ players, newPlayerName, addPlayer, deletePlayer, setNewPl
           onClick={addPlayer}
           className="px-4 bg-[#272660] text-white rounded-r"
         >
-          Add Player
+          Join
         </button>
       </div>
 
