@@ -55,7 +55,7 @@ const PlayerQueue = ({ players, newPlayerName, addPlayer, deletePlayer, setNewPl
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
                       className={`flex items-center justify-between p-3 shadow-md hover:shadow-md transition-shadow mb-2 ${
-                        snapshot.isDragging ? "bg-white/80" : " bg-white"
+                        snapshot.isDragging ? "bg-white/80 scale-105" : " bg-white"
                       }`}
                     >
                       {/* Drag Handle Icon */}
