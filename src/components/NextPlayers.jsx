@@ -20,7 +20,7 @@ const NextPlayers = ({ players, onPlay }) => {
       </div>
       <button
         onClick={onPlay}
-        className="mt-4 w-full px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500"
+        className="mt-4 w-full px-4 py-2 bg-green-500 text-white hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500"
       >
         Play
       </button>

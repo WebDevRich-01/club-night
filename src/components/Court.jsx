@@ -32,7 +32,7 @@ const Court = ({ courtId, players, isAvailable, onFinish, onToggleAvailability }
           <button
             onClick={onFinish}
             disabled={players.length === 0 || !isAvailable}
-            className="mt-4 w-full px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 disabled:bg-gray-300 disabled:cursor-not-allowed"
+            className="mt-4 w-full px-4 py-2 bg-red-500 text-white hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 disabled:bg-gray-300 disabled:cursor-not-allowed"
           >
             Finished
           </button>
