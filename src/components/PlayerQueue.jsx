@@ -49,12 +49,14 @@ const PlayerQueue = ({ players, newPlayerName, addPlayer, deletePlayer, setNewPl
                   draggableId={player.id.toString()}
                   index={index}
                 >
-                  {(provided) => (
+                  {(provided, snapshot) => (
                     <div
                       ref={provided.innerRef}
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
-                      className="flex items-center justify-between p-3 bg-white shadow-md hover:shadow-md transition-shadow mb-2"
+                      className={`flex items-center justify-between p-3 shadow-md hover:shadow-md transition-shadow mb-2 ${
+                        snapshot.isDragging ? "bg-white/80" : " bg-white"
+                      }`}
                     >
                       {/* Drag Handle Icon */}
                       <div className="text-gray-400">
